@@ -80,3 +80,21 @@ module.exports = {
     },
     plugins: [],
 };
+
+//Prettier Tailwind class sorter is not working with the twrnc library
+// add this is in your prettier.config.js
+// {
+//     "tailwindFunctions": ["tw"],
+//     "tailwindCSS.classAttributes": ["class", "className", "ngClass", "style"],
+//     "tailwindCSS.experimental.classRegex": [
+//         "tw`([^`]*)",
+//         "tw=\"([^\"]*)",
+//         "tw={\"([^\"}]*)",
+//         "tw\\.\\w+`([^`]*)",
+//         "tw\\(.*?\\)`([^`]*)"
+//     ],
+//     "plugins": [
+//         "@trivago/prettier-plugin-sort-imports",
+//         "prettier-plugin-tailwindcss"
+//     ]
+// }
