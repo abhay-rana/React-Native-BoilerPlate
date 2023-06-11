@@ -42,11 +42,8 @@ npm uninstall -g react-native-cli
 ## Quick start
 Generate a new React Native(**v0.71.7**) app using the **@abhay/react-native-template**:
 
-eg:- npx react-native init ReactNativeTestings --template https://github.com/abhay-ran
-a/React-Native-BoilerPlate#[branch-name]
+eg:- npx react-native init ReactNativeTestings --template https://github.com/abhay-rana/React-Native-BoilerPlate#[branch-name]
 
-npx react-native init ReactNativeTestings --template https://github.com/abhay-ran
-a/React-Native-BoilerPlate#components
+npx react-native init ReactNativeTestings --template https://github.com/abhay-rana/React-Native-BoilerPlate#components
 
-npx react-native init ReactNativeTestings --template https://github.com/abhay-ran
-a/React-Native-BoilerPlate
+npx react-native init ReactNativeTestings --template https://github.com/abhay-rana/React-Native-BoilerPlate
