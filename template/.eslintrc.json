@@ -22,7 +22,10 @@
     "plugins": ["react", "react-native"],
     "parserOptions": {
         "sourceType": "module",
-        "requireConfigFile": false // <== ADD THIS
+        "requireConfigFile": false, // <== ADD THIS
+        "babelOptions": {
+            "presets": ["@babel/preset-react"]
+        }
     },
     "settings": {
         "import/ignore": [

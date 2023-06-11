@@ -28,12 +28,12 @@
     },
     "dependencies": {
         "@notifee/react-native": "^7.7.1",
+        "@react-native-async-storage/async-storage": "^1.17.11",
+        "@react-native-community/netinfo": "^9.3.7",
         "@react-native-firebase/app": "^17.5.0",
         "@react-native-firebase/messaging": "^17.4.3",
         "@react-navigation/native": "^6.1.6",
-        "@react-native-async-storage/async-storage": "^1.17.11",
         "@react-navigation/native-stack": "^6.9.12",
-        "@react-native-community/netinfo": "^9.3.7",
         "@redux-offline/redux-offline": "2.6.0-native.1",
         "react": "18.2.0",
         "react-native": "0.71.7",
@@ -59,6 +59,7 @@
     "devDependencies": {
         "@babel/core": "^7.20.0",
         "@babel/preset-env": "^7.20.0",
+        "@babel/preset-react": "^7.22.5",
         "@babel/runtime": "^7.20.0",
         "@react-native-community/eslint-config": "^3.2.0",
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
