@@ -79,11 +79,11 @@ export const useLocation = () => {
             if (navigationRef.isReady()) {
                 const screen_name = navigationRef.getCurrentRoute().name;
                 console.log('SCREEN', screen_name);
-                setRoute(screen_name);
+                setLocation(screen_name);
             } else {
                 setTimeout(() => {
                     const screen_name = navigationRef.getCurrentRoute().name;
-                    setRoute(screen_name);
+                    setLocation(screen_name);
                 }, 0);
             }
         }, [])
