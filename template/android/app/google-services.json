@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "397623665680",
+    "project_id": "khushiapp-51024",
+    "storage_bucket": "khushiapp-51024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397623665680:android:766d09cf5ca5bbeb481695",
+        "android_client_info": {
+          "package_name": "com.reactnativetemplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "397623665680-ar0oebcg38h2igu6sm46b9mefb9rclvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeJYHnkTBQhqH6My2F7jOs31l0x8_8EYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "397623665680-ar0oebcg38h2igu6sm46b9mefb9rclvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

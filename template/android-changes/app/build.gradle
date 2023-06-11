@@ -1,0 +1,43 @@
+apply plugin: 'com.google.gms.google-services' // <- for firebase push notification
+
+// START-> added for the read version number from package.json file
+// import at the top
+import groovy.json.JsonSlurper 
+
+// and this method for the reading the android_release_number from the package.jsomn
+def getNodePackageVersion() {
+    def packageFile = new File("$rootDir/../package.json")
+    def packageJson = new JsonSlurper().parseText(packageFile.text)
+    return packageJson["android_release_number"]
+}
+// and this method
+def getNodeBuildVersion() {
+    def packageFile = new File("$rootDir/../package.json")
+    def packageJson = new JsonSlurper().parseText(packageFile.text)
+    return packageJson["android_build_number"]
+}
+
+android{
+    //..
+    defaultConfig{
+        //..
+        versionCode getNodeBuildVersion() // do not use decimal number here
+        versionName getNodePackageVersion()  // you can use decimal number here.
+        //..
+    }
+    //..
+}
+
+//END-> added for the read version number from package.json file
+
+dependencies{
+    //..    
+    // FOR GIFF AND WEBP SUPPORT
+    // For animated GIF support
+    implementation 'com.facebook.fresco:animated-gif:2.5.0'
+    // For WebP support, including animated WebP
+    implementation 'com.facebook.fresco:animated-webp:2.5.0'
+    implementation 'com.facebook.fresco:webpsupport:2.5.0'
+    // END GIFF AND WEB SUPPORT
+  //..
+}

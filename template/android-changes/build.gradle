@@ -1,0 +1,7 @@
+dependencies{
+    //..
+    // ...for google firebase notification
+        classpath 'com.google.gms:google-services:4.3.15'
+        // end google firebase notiifcation
+    //..
+}
