@@ -78,6 +78,7 @@ export const useLocation = () => {
         useCallback(() => {
             if (navigationRef.isReady()) {
                 const screen_name = navigationRef.getCurrentRoute().name;
+                console.log('SCREEN', screen_name);
                 setRoute(screen_name);
             } else {
                 setTimeout(() => {
