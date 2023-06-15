@@ -46,12 +46,12 @@ const Navigation = (props) => {
                 screenOptions={{
                     headerShown: false,
                 }}
-                screenListeners={{
-                    state: (e) => {
-                        SetScreenName('screen_listener', e.data);
-                        // navigate(e.data.state.routes[e.data.state.index].name);
-                    },
-                }}
+                // screenListeners={{
+                //     state: (e) => {
+                //         SetScreenName('screen_listener', e.data);
+                //         // navigate(e.data.state.routes[e.data.state.index].name);
+                //     },
+                // }}
             >
                 {/* OnBoarding Screen */}
                 {/* Auth Screens */}

@@ -17,22 +17,28 @@ import store from '~/reducers/store';
 export const navigationRef = createNavigationContainerRef();
 
 export const SetScreenName = (from, data) => {
-    if (from === 'screen_listener') {
-        // const current_screen_name = navigationRef.getCurrentRoute().name;
-        const new_screen_name = data.state.routes[data.state.index].name;
-        if (
-            SECURE_ROUTES.includes(new_screen_name) &&
-            !store.getState().auth_store.is_login
-        ) {
-            navigationRef.current.dispatch(StackActions.replace(LOGIN_SCREEN));
-        }
-    } else {
-        if (navigationRef.isReady()) {
-            store.dispatch({
-                type: CONTAINER_SET_CURRENT_SCREEN_NAME,
-                screen_name: navigationRef.getCurrentRoute().name,
-            });
-        }
+    // if (from === 'screen_listener') {
+    //     // const current_screen_name = navigationRef.getCurrentRoute().name;
+    //     const new_screen_name = data.state.routes[data.state.index].name;
+    //     if (
+    //         SECURE_ROUTES.includes(new_screen_name) &&
+    // !store.getState().auth_store.is_login
+    //     ) {
+    //         navigationRef.current.dispatch(StackActions.replace(LOGIN_SCREEN));
+    //     }
+    // } else {
+    //     if (navigationRef.isReady()) {
+    //         store.dispatch({
+    //             type: CONTAINER_SET_CURRENT_SCREEN_NAME,
+    //             screen_name: navigationRef.getCurrentRoute().name,
+    //         });
+    //     }
+    // }
+    if (navigationRef.isReady()) {
+        store.dispatch({
+            type: CONTAINER_SET_CURRENT_SCREEN_NAME,
+            screen_name: navigationRef.getCurrentRoute().name,
+        });
     }
 };
 
