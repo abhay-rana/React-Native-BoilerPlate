@@ -1,9 +1,8 @@
-import { TAB_FOOTER_SCREENS } from '~/navigation/navigation-constant';
-
 import {
     CONTAINER_SET_CONTROLS,
     CONTAINER_SET_CURRENT_SCREEN_NAME,
-} from '~/actions/types';
+} from '~/constants/action-types';
+import { TAB_FOOTER_SCREENS } from '~/constants/navigation-constant';
 
 const INITIAL_STATE = {
     show_tab_footer: false,

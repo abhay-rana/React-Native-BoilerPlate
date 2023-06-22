@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View } from 'react-native';
-import { SCREEN_THREE } from '~/navigation/navigation-constant';
+import { SCREEN_THREE } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
 

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
-import { INPUT_SCREEN } from '~/navigation/navigation-constant';
+import { INPUT_SCREEN } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
 import { SECONDARY_FONT_BLACK } from '~/styles/theme-var';

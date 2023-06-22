@@ -1,4 +1,4 @@
-import { REHYDRATION_SET_REHYDRATION_VALUE } from '~/actions/types';
+import { REHYDRATION_SET_REHYDRATION_VALUE } from '~/constants/action-types';
 
 const INITIAL_STATE = {
     is_rehydrated: false,

@@ -1,4 +1,4 @@
-import { USER_SET_LOGIN, USER_SET_LOGOUT } from '~/actions/types';
+import { USER_SET_LOGIN, USER_SET_LOGOUT } from '~/constants/action-types';
 
 export const INITIAL_STATE = {
     is_login: null,

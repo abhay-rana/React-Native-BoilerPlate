@@ -2,8 +2,7 @@ import { offline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-
-import { REHYDRATION_SET_REHYDRATION_VALUE } from '~/actions/types';
+import { REHYDRATION_SET_REHYDRATION_VALUE } from '~/constants/action-types';
 
 import { AuthReducer } from '~/reducers/auth-reducer';
 import { ContainerReducer } from '~/reducers/container-reducer';

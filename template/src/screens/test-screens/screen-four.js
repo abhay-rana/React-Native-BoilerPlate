@@ -1,14 +1,13 @@
 import React, { memo } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { SCREEN_THREE } from '~/navigation/navigation-constant';
+import { USER_SET_LOGIN, USER_SET_LOGOUT } from '~/constants/action-types';
+import { SCREEN_THREE } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
 
 import Button from '~/components/library/button';
 import Text from '~/components/library/text';
-
-import { USER_SET_LOGIN, USER_SET_LOGOUT } from '~/actions/types';
 
 import { useLocation } from '~/hooks/useLocation';
 

@@ -14,7 +14,7 @@ import {
     SCREEN_TWO,
     TEXT_SCREEN,
     TOAST_SCREEN,
-} from '~/navigation/navigation-constant';
+} from '~/constants/navigation-constant';
 
 import CheckboxScreen from '~/screens/main-screens/checkbox-screen';
 import ComponentScreen from '~/screens/main-screens/component-screen';

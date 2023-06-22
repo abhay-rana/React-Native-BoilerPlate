@@ -7,7 +7,7 @@ import {
     RADIO_SCREEN,
     TEXT_SCREEN,
     TOAST_SCREEN,
-} from '~/navigation/navigation-constant';
+} from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
 

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { TAB_FOOTER_SCREENS } from '~/navigation/navigation-constant';
+import { TAB_FOOTER_SCREENS } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
 

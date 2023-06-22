@@ -4,13 +4,12 @@ import {
     useFocusEffect,
 } from '@react-navigation/native';
 import { useCallback, useState } from 'react';
+import { CONTAINER_SET_CURRENT_SCREEN_NAME } from '~/constants/action-types';
 import {
     ERROR_SCREEN,
     LOGIN_SCREEN,
     SECURE_ROUTES,
-} from '~/navigation/navigation-constant';
-
-import { CONTAINER_SET_CURRENT_SCREEN_NAME } from '~/actions/types';
+} from '~/constants/navigation-constant';
 
 import store from '~/reducers/store';
 
