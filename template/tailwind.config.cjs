@@ -1,18 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 
+const { default: fonts } = require('./src/styles/fonts');
+
 module.exports = {
     content: ['./app.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
 
     theme: {
-        fontFamily: {
-            // primary text and the secondary text
-            400: 'Poppins-Regular',
-            500: 'Poppins-Medium',
-            700: 'Poppins-Black',
-            401: 'Kalam-Light',
-            501: 'Kalam-Regular',
-            701: 'Kalam-Bold',
-        },
+        fontFamily: fonts,
         extend: {
             colors: {
                 transparent: 'transparent',
@@ -80,21 +74,3 @@ module.exports = {
     },
     plugins: [],
 };
-
-//Prettier Tailwind class sorter is not working with the twrnc library
-// add this is in your prettier.config.js
-// {
-//     "tailwindFunctions": ["tw"],
-//     "tailwindCSS.classAttributes": ["class", "className", "ngClass", "style"],
-//     "tailwindCSS.experimental.classRegex": [
-//         "tw`([^`]*)",
-//         "tw=\"([^\"]*)",
-//         "tw={\"([^\"}]*)",
-//         "tw\\.\\w+`([^`]*)",
-//         "tw\\(.*?\\)`([^`]*)"
-//     ],
-//     "plugins": [
-//         "@trivago/prettier-plugin-sort-imports",
-//         "prettier-plugin-tailwindcss"
-//     ]
-// }

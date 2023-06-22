@@ -13,7 +13,7 @@ const ScreenTwo = () => {
     const [location, setLocation] = useLocation();
     return (
         <View style={tw``}>
-            <Text>ScreenTwo</Text>
+            <Text style={tw``}>ScreenTwo</Text>
             <Button onPress={() => setLocation(SCREEN_THREE)}>ScreenTwo</Button>
         </View>
     );
