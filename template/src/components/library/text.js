@@ -2,15 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Text as RNText, View } from 'react-native';
 
-import tw from '~/styles/tailwind';
 import {
     PRIMARY_FONT_BLACK,
     PRIMARY_FONT_BOLD,
     PRIMARY_FONT_REGULAR,
     SECONDARY_FONT_BOLD,
     SECONDARY_FONT_MEDIUM,
-    
-} from '~/styles/theme-var';
+} from '~/styles/fonts';
+import tw from '~/styles/tailwind';
 
 const primary_weight = {
     w300: {

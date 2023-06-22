@@ -4,6 +4,7 @@
 // semibold is 600
 // medium is 500
 // regular is 400
+// thin is 300
 
 const fonts = {
     400: 'Poppins-Regular',
