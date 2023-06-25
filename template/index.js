@@ -1,8 +1,11 @@
 import { AppRegistry, LogBox } from 'react-native';
 import Toast from 'react-native-toast-message';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from '~/reducers/store';
+import Text from '~/components/library/text';
+
+import store, { persistor } from '~/reducers/store';
 
 import { config } from '~/scripts/toast';
 
@@ -20,8 +23,13 @@ const Root = () => {
     return (
         <>
             <Provider store={store}>
-                <App />
-                <Toast config={config} />
+                <PersistGate
+                    loading={<Text>Loading...</Text>}
+                    persistor={persistor}
+                >
+                    <App />
+                    <Toast config={config} />
+                </PersistGate>
             </Provider>
         </>
     );

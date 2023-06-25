@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -5,21 +6,19 @@ import tw from '~/styles/tailwind';
 
 import TabFooter from '~/components/container/tab-footer';
 
-const Container = ({ children, ...props }) => {
+const Container = ({ children }) => {
+    useEffect(() => {
+        //! hide the splashScreen here
+    }, []);
+
     return (
         <>
-            {props.is_rehydrated ? (
-                <View style={tw`flex-1`}>
-                    {children}
-                    <TabFooter />
-                </View>
-            ) : null}
+            <View style={tw`flex-1`}>
+                {children}
+                <TabFooter />
+            </View>
         </>
     );
 };
 
-const mapStateToProps = (state) => ({
-    is_rehydrated: state.rehydration_store.is_rehydrated,
-});
-
-export default connect(mapStateToProps, null)(Container);
+export default connect(null, null)(Container);

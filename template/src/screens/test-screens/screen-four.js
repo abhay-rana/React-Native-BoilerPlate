@@ -1,7 +1,11 @@
 import React, { memo } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { USER_SET_LOGIN, USER_SET_LOGOUT } from '~/constants/action-types';
+import {
+    LOGOUT,
+    USER_SET_LOGIN,
+    USER_SET_LOGOUT,
+} from '~/constants/action-types';
 import { SCREEN_THREE } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
@@ -28,7 +32,7 @@ const ScreenFour = (props) => {
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
     User_Set_Login: () => dispatch({ type: USER_SET_LOGIN }),
-    User_Set_Logout: () => dispatch({ type: USER_SET_LOGOUT }),
+    User_Set_Logout: () => dispatch({ type: LOGOUT }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScreenFour);
