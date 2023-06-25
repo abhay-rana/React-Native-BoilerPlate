@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MMKV } from 'react-native-mmkv';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
@@ -15,9 +16,27 @@ const combine_reducers = combineReducers({
     auth_store: AuthReducer,
 });
 
+const storage = new MMKV();
+
+const reduxStorage = {
+    setItem: (key, value) => {
+        storage.set(key, value);
+        return Promise.resolve(true);
+    },
+    getItem: (key) => {
+        const value = storage.getString(key);
+        return Promise.resolve(value);
+    },
+    removeItem: (key) => {
+        storage.delete(key);
+        return Promise.resolve();
+    },
+};
+
 const persistConfig = {
     key: 'root',
-    storage: AsyncStorage,
+    // mmkv storage engine does not works with the remote debugging so you can use the "AsyncStorage"
+    storage: reduxStorage,
     blacklist: ['rehydration_store'],
 };
 
