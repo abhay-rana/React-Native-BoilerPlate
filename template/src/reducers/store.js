@@ -60,12 +60,21 @@ if (APP_MODE === 'development') {
 } else composeEnhancers = compose;
 
 const middlewares = [
-    applyMiddleware(thunk),
+    thunk,
     // offline(custom_config),
     // sentryReduxEnhancer,
 ];
 
-const enhancer = composeEnhancers(...middlewares);
+if (__DEV__) {
+    const createDebugger = require('redux-flipper').default;
+    middlewares.push(createDebugger());
+    import('react-native-mmkv-flipper-plugin').then(
+        ({ initializeMMKVFlipper }) =>
+            initializeMMKVFlipper({ default: storage })
+    );
+}
+
+const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 export const store = createStore(persist_reducer, enhancer);
 export const persistor = persistStore(store);
 
