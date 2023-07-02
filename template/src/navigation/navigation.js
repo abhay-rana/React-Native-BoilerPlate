@@ -6,6 +6,7 @@ import {
     CHECKBOX_SCREEN,
     COMPONENT_SCREEN,
     INPUT_SCREEN,
+    KEYBOARD_AVOIDING,
     RADIO_SCREEN,
     SCREEN_FIVE,
     SCREEN_FOUR,
@@ -19,6 +20,7 @@ import {
 import CheckboxScreen from '~/screens/main-screens/checkbox-screen';
 import ComponentScreen from '~/screens/main-screens/component-screen';
 import InputScreen from '~/screens/main-screens/input-screen';
+import KeyboardAvoidingScreen from '~/screens/main-screens/keyboard-avoiding-screen';
 import RadioScreen from '~/screens/main-screens/radio-screen';
 import TextScreen from '~/screens/main-screens/text-screen';
 import ToastScreen from '~/screens/main-screens/toast-screen';
@@ -42,7 +44,7 @@ const Navigation = (props) => {
     return (
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator
-                initialRouteName={SCREEN_ONE}
+                initialRouteName={KEYBOARD_AVOIDING}
                 screenOptions={{
                     headerShown: false,
                 }}
@@ -74,6 +76,10 @@ const Navigation = (props) => {
                 <Stack.Screen name={SCREEN_THREE} component={ScreenThree} />
                 <Stack.Screen name={SCREEN_FOUR} component={ScreenFour} />
                 <Stack.Screen name={SCREEN_FIVE} component={ScreenFive} />
+                <Stack.Screen
+                    name={KEYBOARD_AVOIDING}
+                    component={KeyboardAvoidingScreen}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
