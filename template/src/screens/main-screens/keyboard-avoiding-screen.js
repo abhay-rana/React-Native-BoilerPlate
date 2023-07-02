@@ -36,7 +36,7 @@ const KeyboardAvoidingScreen = () => {
         const handleInputChange = () => {};
     return (
         <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : "height"}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             enabled
             style={tw`flex-1 items-center justify-center`}
             keyboardVerticalOffset={48}
