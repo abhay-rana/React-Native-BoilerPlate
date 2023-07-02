@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { View } from 'react-native';
 import 'react-native-gesture-handler';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
-import Navigation from '~/navigation/navigation';
 
 import tw from '~/styles/tailwind';
 
+import Navigation from '~/navigation/navigation';
+
 import Container from '~/components/container/container';
+import ErrorBoundary from '~/components/container/error-boundary';
 
 import { CommonResetLocalState } from '~/actions/container-actions';
 
@@ -16,11 +19,17 @@ const App = (props) => {
     }, []);
 
     return (
-        <View style={tw`flex-1`}>
-            <Container>
-                <Navigation />
-            </Container>
-        </View>
+        <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+                <View style={tw`flex-1 relative`}>
+                    <ErrorBoundary>
+                        <Container>
+                            <Navigation />
+                        </Container>
+                    </ErrorBoundary>
+                </View>
+            </SafeAreaView>
+        </SafeAreaProvider>
     );
 };
 
