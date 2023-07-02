@@ -1,3 +1,10 @@
 {
-    "tailwindCSS.classAttributes": ["class", "className", "ngClass", "style"]
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "ngClass",
+        "style"
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }

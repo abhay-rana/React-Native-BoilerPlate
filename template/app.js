@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { StatusBar, View } from 'react-native';
 import 'react-native-gesture-handler';
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import {
+    SafeAreaProvider,
+    SafeAreaView,
+    useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 
 import tw from '~/styles/tailwind';
@@ -21,7 +25,7 @@ const App = (props) => {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1 }}>
-            <TopStatusFiller />
+                <TopStatusFiller />
                 <View style={tw`flex-1 relative`}>
                     <ErrorBoundary>
                         <Container>
@@ -29,32 +33,42 @@ const App = (props) => {
                         </Container>
                     </ErrorBoundary>
                 </View>
-                	<BottomStatusFiller />
+                <BottomStatusFiller />
             </SafeAreaView>
         </SafeAreaProvider>
     );
 };
 
 const TopStatusFiller = () => {
-	const insets = useSafeAreaInsets();
-	const statusBarHeight = insets.top;
+    const insets = useSafeAreaInsets();
+    const statusBarHeight = insets.top;
 
-	return (
-		<>
-			<StatusBar barStyle="light-content" backgroundColor="#000" />
-			<View style={[tw`bg-black absolute top-0 left-0 right-0`, { height: statusBarHeight }]} />
-		</>
-	);
+    return (
+        <>
+            <StatusBar barStyle="light-content" backgroundColor="#000" />
+            <View
+                style={[
+                    tw`bg-black absolute top-0 left-0 right-0`,
+                    { height: statusBarHeight },
+                ]}
+            />
+        </>
+    );
 };
 
 const BottomStatusFiller = () => {
-	const insets = useSafeAreaInsets();
-	const statusBarHeight = insets.bottom;
+    const insets = useSafeAreaInsets();
+    const statusBarHeight = insets.bottom;
 
-	return <View style={[tw`bg-white absolute bottom-0 left-0 right-0 h-10`, { height: statusBarHeight }]} />;
+    return (
+        <View
+            style={[
+                tw`bg-white absolute bottom-0 left-0 right-0 h-10`,
+                { height: statusBarHeight },
+            ]}
+        />
+    );
 };
-
-
 
 const mapDispatchToProps = (dispatch) => ({
     Common_Reset_Local_State: () => dispatch(CommonResetLocalState()),
