@@ -1,11 +1,6 @@
-import React, { memo } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import {
-    LOGOUT,
-    USER_SET_LOGIN,
-    USER_SET_LOGOUT,
-} from '~/constants/action-types';
+import { LOGOUT, USER_SET_LOGIN } from '~/constants/action-types';
 import { SCREEN_THREE } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
@@ -17,6 +12,7 @@ import { useLocation } from '~/hooks/useLocation';
 
 const ScreenFour = (props) => {
     const [location, setLocation] = useLocation();
+    console.log('location 4:', location);
     return (
         <View style={tw``}>
             <Text>ScreenFour</Text>

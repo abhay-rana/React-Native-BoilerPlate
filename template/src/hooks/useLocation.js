@@ -1,9 +1,8 @@
 import {
     StackActions,
     createNavigationContainerRef,
-    useFocusEffect,
 } from '@react-navigation/native';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { CONTAINER_SET_CURRENT_SCREEN_NAME } from '~/constants/action-types';
 import {
     ERROR_SCREEN,
@@ -33,6 +32,14 @@ export const SetScreenName = (from, data) => {
     //         });
     //     }
     // }
+    navigationRef.addListener('state', () => {
+        if (navigationRef.isReady()) {
+            store.dispatch({
+                type: CONTAINER_SET_CURRENT_SCREEN_NAME,
+                screen_name: navigationRef.getCurrentRoute().name,
+            });
+        }
+    });
     if (navigationRef.isReady()) {
         store.dispatch({
             type: CONTAINER_SET_CURRENT_SCREEN_NAME,
@@ -73,26 +80,40 @@ export const navigate = (name, params, replace) => {
         );
         return navigationRef.isReady()
             ? navigationRef.getCurrentRoute().name
-            : 'Error';
+            : ERROR_SCREEN;
     }
 };
 
 export const useLocation = () => {
     const [location, setRoute] = useState();
-    useFocusEffect(
-        useCallback(() => {
-            if (navigationRef.isReady()) {
-                const screen_name = navigationRef.getCurrentRoute().name;
-                console.log('SCREEN', screen_name);
-                setLocation(screen_name);
-            } else {
-                setTimeout(() => {
-                    const screen_name = navigationRef.getCurrentRoute().name;
-                    setLocation(screen_name);
-                }, 0);
-            }
-        }, [])
-    );
+
+    // useFocusEffect(
+    //     useCallback(() => {
+    //         if (navigationRef.isReady()) {
+    //             const screen_name = navigationRef.getCurrentRoute().name;
+    //             console.log('SCREEN', screen_name);
+    //             setLocation(screen_name);
+    //         } else {
+    //             setTimeout(() => {
+    //                 const screen_name = navigationRef.getCurrentRoute().name;
+    //                 setLocation(screen_name);
+    //             }, 0);
+    //         }
+    //     }, [])
+    // );
+
+    // a global event listener if there is any change in the screen route so it will fire all the useLocation hook and hydrate with the update value
+    // remember that it has a huge-overhead as we know that react navigation works on the stack so all the screens present in the stack will be re-rendered
+    // useEffect(() => {
+    //     const unsubscribe = navigationRef.addListener('state', () => {
+    //         console.log('state is', navigationRef.getCurrentRoute().name);
+    //         setRoute(navigationRef.getCurrentRoute().name);
+    //     });
+    //     return () => {
+    //         console.log('unmounts');
+    //         unsubscribe();
+    //     };
+    // },[]);
 
     const setLocation = (route, params, replace) => {
         setRoute(navigate(route, params, replace));

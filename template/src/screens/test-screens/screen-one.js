@@ -1,4 +1,3 @@
-import React, { memo } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { SCREEN_TWO } from '~/constants/navigation-constant';
@@ -18,6 +17,7 @@ import { useLocation } from '~/hooks/useLocation';
 
 const ScreenOne = (props) => {
     const [location, setLocation] = useLocation();
+    console.log('location is:', location);
     return (
         <View style={tw`flex-1`}>
             <Text style={tw`font-401`}>ScreenOne</Text>
@@ -46,7 +46,15 @@ const ScreenOne = (props) => {
                 }
                 bordered
             />
-            <Button onPress={() => setLocation(SCREEN_TWO)}>ScreenTwo</Button>
+            <Button
+                onPress={() =>
+                    setLocation(SCREEN_TWO, {
+                        name: 'abhay',
+                    })
+                }
+            >
+                ScreenTwo
+            </Button>
         </View>
     );
 };
