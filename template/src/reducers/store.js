@@ -16,7 +16,24 @@ const combine_reducers = combineReducers({
     auth_store: AuthReducer,
 });
 
-const storage = new MMKV();
+if (!__DEV__) {
+    var storage = new MMKV();
+}
+
+const middlewares = [
+    thunk,
+    // offline(custom_config),
+    // sentryReduxEnhancer,
+];
+
+if (__DEV__) {
+    const createDebugger = require('redux-flipper').default;
+    middlewares.push(createDebugger());
+    import('react-native-mmkv-flipper-plugin').then(
+        ({ initializeMMKVFlipper }) =>
+            initializeMMKVFlipper({ default: storage })
+    );
+}
 
 const reduxStorage = {
     setItem: (key, value) => {
@@ -36,7 +53,7 @@ const reduxStorage = {
 const persistConfig = {
     key: 'root',
     // mmkv storage engine does not works with the remote debugging so you can use the "AsyncStorage"
-    storage: reduxStorage,
+    storage: __DEV__ ? AsyncStorage : reduxStorage,
     blacklist: ['rehydration_store'],
 };
 
@@ -58,21 +75,6 @@ if (APP_MODE === 'development') {
               })
             : compose;
 } else composeEnhancers = compose;
-
-const middlewares = [
-    thunk,
-    // offline(custom_config),
-    // sentryReduxEnhancer,
-];
-
-if (__DEV__) {
-    const createDebugger = require('redux-flipper').default;
-    middlewares.push(createDebugger());
-    import('react-native-mmkv-flipper-plugin').then(
-        ({ initializeMMKVFlipper }) =>
-            initializeMMKVFlipper({ default: storage })
-    );
-}
 
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 export const store = createStore(persist_reducer, enhancer);
