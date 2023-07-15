@@ -12,6 +12,12 @@
         "body": ["useEffect(() => {", "    return () => {};", "}, []);", ""],
         "description": "useEffect Js"
     },
+    "useLocation Rn": {
+        "prefix": "useLocation,location,ul",
+        "body": ["const { setLocation} = useLocation();$0"],
+        "description": "React useLocation() hook"
+    },
+
     "React Memo Component": {
         "scope": "javascript,typescript,javascriptreact",
         "prefix": "ramc",

@@ -15,7 +15,7 @@ import Text from '~/components/library/text';
 import { useLocation } from '~/hooks/useLocation';
 
 const TabFooter = (props) => {
-    const [_, setLocation] = useLocation();
+    const { setLocation} = useLocation();
     console.log('****current_screen****', props.current_screen);
     return (
         <>

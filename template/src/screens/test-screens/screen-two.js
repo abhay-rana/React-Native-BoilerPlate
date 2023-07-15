@@ -10,8 +10,8 @@ import Text from '~/components/library/text';
 import { useLocation } from '~/hooks/useLocation';
 
 const ScreenTwo = (route, params) => {
-    const [location, setLocation] = useLocation();
-    console.log('location 2:', location);
+    const { setLocation } = useLocation();
+    console.log('rendered screen two***');
     console.log(route.params);
     return (
         <View style={tw``}>

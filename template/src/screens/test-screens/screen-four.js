@@ -11,8 +11,8 @@ import Text from '~/components/library/text';
 import { useLocation } from '~/hooks/useLocation';
 
 const ScreenFour = (props) => {
-    const [location, setLocation] = useLocation();
-    console.log('location 4:', location);
+    const { setLocation } = useLocation();
+    console.log('rendered screen four');
     return (
         <View style={tw``}>
             <Text>ScreenFour</Text>

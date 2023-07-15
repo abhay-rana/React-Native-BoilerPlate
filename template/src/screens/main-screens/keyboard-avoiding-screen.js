@@ -1,16 +1,11 @@
-import  { memo, useState } from 'react';
+import { memo } from 'react';
 import {
-    
-    Image,
     KeyboardAvoidingView,
     Platform,
-    
     ScrollView,
     StyleSheet,
     TextInput,
-    
     TouchableOpacity,
-    
     View,
 } from 'react-native';
 
@@ -18,22 +13,13 @@ import tw from '~/styles/tailwind';
 
 import Text from '~/components/library/text';
 
-
-
-
-
 // import { ACTIVITY_LEVEL_SCREEN } from '~/constants/navigation-constant';
-
-import { useLocation,navigationRef } from '~/hooks/useLocation';
-
-
+import { navigationRef } from '~/hooks/useLocation';
 
 // import TextInput from '~/components/library/text-input';
 
 const KeyboardAvoidingScreen = () => {
-    const [input, setInput] = useState();
-    const [location, setLocation] = useLocation();
-        const handleInputChange = () => {};
+    const handleInputChange = () => {};
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -47,116 +33,120 @@ const KeyboardAvoidingScreen = () => {
                 showsVerticalScrollIndicator={false}
                 keyboardDismissMode="on-drag"
             >
-            <View style={styles.container}>
-                <View style={styles.headingContainer}>
-                    <Text style={styles.heading}>Your Measurement</Text>
-                    <Text style={styles.subHeading}>
-                        You Can Always Change This Later{' '}
-                    </Text>
-                </View>
-                <Text style={styles.divider}></Text>
-                <View style={styles.subContainer}>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Chest </Text>
-                            <TextInput style={styles.input} />
-                        </View>
-                        <View>
-                            <Text style={styles.label}> Shoulder </Text>
-                            <TextInput style={styles.input} />
-                        </View>
+                <View style={styles.container}>
+                    <View style={styles.headingContainer}>
+                        <Text style={styles.heading}>Your Measurement</Text>
+                        <Text style={styles.subHeading}>
+                            You Can Always Change This Later{' '}
+                        </Text>
                     </View>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Arm (L) </Text>
-                            <TextInput style={styles.input} />
+                    <Text style={styles.divider}></Text>
+                    <View style={styles.subContainer}>
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Chest </Text>
+                                <TextInput style={styles.input} />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Shoulder </Text>
+                                <TextInput style={styles.input} />
+                            </View>
                         </View>
-                        <View>
-                            <Text style={styles.label}> Arm (R) </Text>
-                            <TextInput style={styles.input} />
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Arm (L) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Arm (R) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Bicep (L) </Text>
-                            <TextInput style={styles.input} />
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Bicep (L) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Bicep (R) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
                         </View>
-                        <View>
-                            <Text style={styles.label}> Bicep (R) </Text>
-                            <TextInput style={styles.input} />
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Forearm (L) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Forearm (R) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Forearm (L) </Text>
-                            <TextInput style={styles.input} />
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Weist </Text>
+                                <TextInput style={styles.input} />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Hip </Text>
+                                <TextInput style={styles.input} />
+                            </View>
                         </View>
-                        <View>
-                            <Text style={styles.label}> Forearm (R) </Text>
-                            <TextInput style={styles.input} />
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Thigh (L) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Thigh (R) </Text>
+                                <TextInput style={styles.input} />
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Weist </Text>
-                            <TextInput style={styles.input} />
+                        <View style={styles.inputContainer}>
+                            <View>
+                                <Text style={styles.label}> Calf (L) </Text>
+                                <TextInput
+                                    style={styles.input}
+                                    autoCorrect={false}
+                                />
+                            </View>
+                            <View>
+                                <Text style={styles.label}> Calf (R) </Text>
+                                <TextInput
+                                    style={styles.input}
+                                    autoCorrect={false}
+                                />
+                            </View>
                         </View>
-                        <View>
-                            <Text style={styles.label}> Hip </Text>
-                            <TextInput style={styles.input} />
-                        </View>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Thigh (L) </Text>
-                            <TextInput style={styles.input} />
-                        </View>
-                        <View>
-                            <Text style={styles.label}> Thigh (R) </Text>
-                            <TextInput style={styles.input} />
-                        </View>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View>
-                            <Text style={styles.label}> Calf (L) </Text>
-                            <TextInput style={styles.input} autoCorrect={false} />
-                        </View>
-                        <View>
-                            <Text style={styles.label}> Calf (R) </Text>
-                            <TextInput style={styles.input} autoCorrect={false}/>
-                        </View>
-                    </View>
 
-                    <View style={styles.imageButtonContainer}>
-                        <TouchableOpacity
-                            onPress={() => navigationRef.goBack()}
-                        >
-                            {/* <Image
+                        <View style={styles.imageButtonContainer}>
+                            <TouchableOpacity
+                                onPress={() => navigationRef.goBack()}
+                            >
+                                {/* <Image
                                 source={require('../../assets/images/back-button.png')}
                                 style={styles.backImage}
                             /> */}
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.button}
-                            // onPress={() => setLocation(ACTIVITY_LEVEL_SCREEN)}
-                        >
-                            <Text style={styles.buttonText}>Next</Text>
-                            {/* <Image
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.button}
+                                // onPress={() => setLocation(ACTIVITY_LEVEL_SCREEN)}
+                            >
+                                <Text style={styles.buttonText}>Next</Text>
+                                {/* <Image
                                 source={require('../../assets/images/start-now-icon.png')}
                                 style={styles.buttonImage}
                             /> */}
-                        </TouchableOpacity>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
-      
             </ScrollView>
         </KeyboardAvoidingView>
     );
 };
 
 export default memo(KeyboardAvoidingScreen);
-
 
 const styles = StyleSheet.create({
     container: {

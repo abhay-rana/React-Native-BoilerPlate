@@ -2,7 +2,7 @@ import {
     StackActions,
     createNavigationContainerRef,
 } from '@react-navigation/native';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { CONTAINER_SET_CURRENT_SCREEN_NAME } from '~/constants/action-types';
 import {
     ERROR_SCREEN,
@@ -85,7 +85,7 @@ export const navigate = (name, params, replace) => {
 };
 
 export const useLocation = () => {
-    const [location, setRoute] = useState();
+    let current_location = useRef();
 
     // useFocusEffect(
     //     useCallback(() => {
@@ -116,8 +116,11 @@ export const useLocation = () => {
     // },[]);
 
     const setLocation = (route, params, replace) => {
-        setRoute(navigate(route, params, replace));
+        navigate(route, params, replace);
+        current_location.current = navigationRef.isReady()
+            ? navigationRef.getCurrentRoute().name
+            : 'Home';
     };
 
-    return [location, setLocation];
+    return { setLocation };
 };

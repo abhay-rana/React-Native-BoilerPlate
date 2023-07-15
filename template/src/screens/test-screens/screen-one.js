@@ -16,8 +16,8 @@ import {
 import { useLocation } from '~/hooks/useLocation';
 
 const ScreenOne = (props) => {
-    const [location, setLocation] = useLocation();
-    console.log('location is:', location);
+    const { setLocation } = useLocation();
+    console.log('rendered screen one***');
     return (
         <View style={tw`flex-1`}>
             <Text style={tw`font-401`}>ScreenOne</Text>
