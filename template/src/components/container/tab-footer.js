@@ -5,8 +5,8 @@ import {
     SCREEN_ONE,
     SCREEN_THREE,
     SCREEN_TWO,
-    TAB_FOOTER_SCREENS,
 } from '~/constants/navigation-constant';
+import { TAB_FOOTER_SCREENS } from '~/constants/special-navigation-constant';
 
 import tw from '~/styles/tailwind';
 
@@ -15,7 +15,7 @@ import Text from '~/components/library/text';
 import { useLocation } from '~/hooks/useLocation';
 
 const TabFooter = (props) => {
-    const { setLocation} = useLocation();
+    const { setLocation } = useLocation();
     console.log('****current_screen****', props.current_screen);
     return (
         <>

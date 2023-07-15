@@ -2,7 +2,7 @@ import {
     CONTAINER_SET_CONTROLS,
     CONTAINER_SET_CURRENT_SCREEN_NAME,
 } from '~/constants/action-types';
-import { TAB_FOOTER_SCREENS } from '~/constants/navigation-constant';
+import { TAB_FOOTER_SCREENS } from '~/constants/special-navigation-constant';
 
 const INITIAL_STATE = {
     show_tab_footer: false,
