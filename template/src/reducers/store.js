@@ -17,6 +17,7 @@ const combine_reducers = combineReducers({
 });
 
 if (!__DEV__) {
+    //* Use the mmkv storage in production mode only
     var storage = new MMKV();
 }
 
@@ -27,6 +28,7 @@ const middlewares = [
 ];
 
 if (__DEV__) {
+    //! use this flipper extensions in debug mode only
     const createDebugger = require('redux-flipper').default;
     middlewares.push(createDebugger());
     import('react-native-mmkv-flipper-plugin').then(

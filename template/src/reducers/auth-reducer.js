@@ -39,13 +39,12 @@ export const AuthReducer = (state = INITIAL_STATE, action) => {
     }
     if (action.type === COMMON_RESET_LOCAL_STATE) {
         return { ...state, ...LOCAL_STATE };
-        
     }
     if (action.type === USER_SET_LOGIN) {
         newState.is_login = true;
         return newState;
     }
-    
+
     if (action.type === AUTH_SET_SIGNUP_DETAILS) {
         newState.user_signup_details = {
             ...state.user_signup_details,

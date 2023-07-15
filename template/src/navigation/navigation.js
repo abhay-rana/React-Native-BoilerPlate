@@ -30,7 +30,7 @@ import ScreenOne from '~/screens/test-screens/screen-one';
 import ScreenThree from '~/screens/test-screens/screen-three';
 import ScreenTwo from '~/screens/test-screens/screen-two';
 
-import { SetScreenName, navigate, navigationRef } from '~/hooks/useLocation';
+import { SetScreenName, navigationRef } from '~/hooks/useLocation';
 
 enableScreens();
 const Stack = createNativeStackNavigator();
@@ -44,7 +44,7 @@ const Navigation = (props) => {
     return (
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator
-                initialRouteName={KEYBOARD_AVOIDING}
+                initialRouteName={SCREEN_ONE}
                 screenOptions={{
                     headerShown: false,
                 }}
