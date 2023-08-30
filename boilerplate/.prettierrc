@@ -9,7 +9,7 @@
         "^~/styles(.*)$",
         "^~/assets(.*)$",
         "^~/common(.*)$",
-        "^~/constants(.*)$",
+        "^~/constants/(.*)$",
         "^~/navigation(/.*)?$",
         "^~/screens/(.*)$",
         "^~/components/(.*)$",

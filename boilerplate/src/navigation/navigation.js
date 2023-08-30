@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useEffect } from 'react';
 import { enableScreens } from 'react-native-screens';
+
 import {
     CHECKBOX_SCREEN,
     COMPONENT_SCREEN,
