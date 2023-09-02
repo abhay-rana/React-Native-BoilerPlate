@@ -109,7 +109,8 @@ export const navigate = (name, params, replace) => {
 };
 
 export const useLocation = () => {
-    let current_location = useRef();
+    let location = useRef().current;
+    location = store.getState().container_store.current_screen;
 
     // useFocusEffect(
     //     useCallback(() => {
@@ -141,10 +142,10 @@ export const useLocation = () => {
 
     const setLocation = (route, params, replace) => {
         navigate(route, params, replace);
-        current_location.current = navigationRef.isReady()
+        location = navigationRef.isReady()
             ? navigationRef.getCurrentRoute().name
             : ERROR_ROUTE;
     };
 
-    return { setLocation };
+    return { location, setLocation };
 };
