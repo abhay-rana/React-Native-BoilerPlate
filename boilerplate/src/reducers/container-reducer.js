@@ -1,12 +1,14 @@
 import {
     CONTAINER_SET_CONTROLS,
     CONTAINER_SET_CURRENT_SCREEN_NAME,
+    CONTAINER_SET_WELCOME_SCREEN,
 } from '~/constants/action-types';
 import { TAB_FOOTER_SCREENS } from '~/constants/special-navigation-constant';
 
 const INITIAL_STATE = {
     show_tab_footer: false,
     current_screen: null,
+    welcome_screen: false,
     tab_name: 'all',
 };
 
@@ -22,6 +24,10 @@ export const ContainerReducer = (state = INITIAL_STATE, action) => {
         newState.show_tab_footer = TAB_FOOTER_SCREENS.includes(
             action.screen_name
         );
+        return newState;
+    }
+    if (action.type === CONTAINER_SET_WELCOME_SCREEN) {
+        newState.welcome_screen = true;
         return newState;
     }
     return state;
