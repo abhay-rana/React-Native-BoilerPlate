@@ -31,7 +31,11 @@ import ScreenOne from '~/screens/test-screens/screen-one';
 import ScreenThree from '~/screens/test-screens/screen-three';
 import ScreenTwo from '~/screens/test-screens/screen-two';
 
-import { SetScreenName, navigationRef } from '~/hooks/useLocation';
+import {
+    ScreenListener,
+    SetScreenName,
+    navigationRef,
+} from '~/hooks/useLocation';
 
 enableScreens();
 const Stack = createNativeStackNavigator();
@@ -39,9 +43,10 @@ const Stack = createNativeStackNavigator();
 const Navigation = (props) => {
     useEffect(() => {
         // set the screen name in the reducer on the first time of the page load
-        console.log('set the screen name');
         SetScreenName();
+        ScreenListener();
     }, []);
+
     return (
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator

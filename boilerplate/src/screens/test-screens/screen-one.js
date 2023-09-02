@@ -1,8 +1,9 @@
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { SCREEN_TWO } from '~/constants/navigation-constant';
 
 import tw from '~/styles/tailwind';
+
+import { SCREEN_TWO } from '~/constants/navigation-constant';
 
 import Button from '~/components/library/button';
 import Text from '~/components/library/text';
@@ -17,7 +18,7 @@ import { useLocation } from '~/hooks/useLocation';
 
 const ScreenOne = (props) => {
     const { setLocation } = useLocation();
-    console.log('rendered screen one***');
+
     return (
         <View style={tw`flex-1`}>
             <Text style={tw`font-401`}>ScreenOne</Text>

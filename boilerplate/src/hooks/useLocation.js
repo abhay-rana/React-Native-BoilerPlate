@@ -12,6 +12,35 @@ import store from '~/reducers/store';
 
 export const navigationRef = createNavigationContainerRef();
 
+export const ScreenListener = () => {
+    //* when the navigator loads then prints the screen name for first time
+    if (__DEV__) {
+        setTimeout(() => {
+            if (navigationRef.isReady()) {
+                console.log(
+                    `%c Navigated To --> ${
+                        navigationRef?.getCurrentRoute()?.name
+                    }`,
+                    'color:red;padding:2px;border:2px solid black'
+                );
+            }
+        }, 0);
+    }
+
+    navigationRef.addListener('state', () => {
+        if (navigationRef.isReady()) {
+            console.log(
+                `%c Navigated To --> ${navigationRef?.getCurrentRoute()?.name}`,
+                'color:red;padding:2px;border:2px solid black'
+            );
+            store.dispatch({
+                type: CONTAINER_SET_CURRENT_SCREEN_NAME,
+                screen_name: navigationRef.getCurrentRoute().name,
+            });
+        }
+    });
+};
+
 export const SetScreenName = (from, data) => {
     // if (from === 'screen_listener') {
     //     // const current_screen_name = navigationRef.getCurrentRoute().name;
@@ -30,14 +59,7 @@ export const SetScreenName = (from, data) => {
     //         });
     //     }
     // }
-    navigationRef.addListener('state', () => {
-        if (navigationRef.isReady()) {
-            store.dispatch({
-                type: CONTAINER_SET_CURRENT_SCREEN_NAME,
-                screen_name: navigationRef.getCurrentRoute().name,
-            });
-        }
-    });
+
     if (navigationRef.isReady()) {
         store.dispatch({
             type: CONTAINER_SET_CURRENT_SCREEN_NAME,

@@ -1,5 +1,8 @@
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+
+import tw from '~/styles/tailwind';
+
 import {
     SCREEN_FIVE,
     SCREEN_ONE,
@@ -8,15 +11,13 @@ import {
 } from '~/constants/navigation-constant';
 import { TAB_FOOTER_SCREENS } from '~/constants/special-navigation-constant';
 
-import tw from '~/styles/tailwind';
-
 import Text from '~/components/library/text';
 
 import { useLocation } from '~/hooks/useLocation';
 
 const TabFooter = (props) => {
     const { setLocation } = useLocation();
-    console.log('****current_screen****', props.current_screen);
+    // console.log('****current_screen****', props.current_screen);
     return (
         <>
             {props.show_tab_footer ? (
@@ -42,7 +43,7 @@ const TabFooter = (props) => {
 };
 
 const _showTabFooter = (screen_name) => {
-    console.log('Tab', screen_name);
+    // console.log('Tab', screen_name);
     if (TAB_FOOTER_SCREENS.includes(screen_name)) {
         return true;
     }
