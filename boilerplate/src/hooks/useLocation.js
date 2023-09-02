@@ -5,8 +5,12 @@ import {
 import { useRef } from 'react';
 
 import { CONTAINER_SET_CURRENT_SCREEN_NAME } from '~/constants/action-types';
-import { ERROR_SCREEN, LOGIN_SCREEN } from '~/constants/navigation-constant';
-import { SECURE_ROUTES } from '~/constants/special-navigation-constant';
+import { ERROR_SCREEN } from '~/constants/navigation-constant';
+import {
+    ERROR_ROUTE,
+    LOGIN_ROUTE,
+    SECURE_ROUTES,
+} from '~/constants/special-navigation-constant';
 
 import store from '~/reducers/store';
 
@@ -74,7 +78,7 @@ export const navigate = (name, params, replace) => {
             SECURE_ROUTES.includes(name) &&
             !store.getState().auth_store.is_login
         ) {
-            navigationRef.current.dispatch(StackActions.replace(LOGIN_SCREEN));
+            navigationRef.current.dispatch(StackActions.replace(LOGIN_ROUTE));
             SetScreenName();
         } else if (navigationRef.getRootState().routeNames.includes(name)) {
             //if the redirection to the the product-detail page then push it to the stack
@@ -139,7 +143,7 @@ export const useLocation = () => {
         navigate(route, params, replace);
         current_location.current = navigationRef.isReady()
             ? navigationRef.getCurrentRoute().name
-            : 'Home';
+            : ERROR_ROUTE;
     };
 
     return { setLocation };
