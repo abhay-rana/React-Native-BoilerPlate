@@ -23,4 +23,6 @@ export const SCREEN_FOUR = 'SCREEN_FOUR';
 export const SCREEN_FIVE = 'SCREEN_FIVE';
 export const LOGIN_SCREEN = 'SCREEN_FOUR';
 
+export const TEST_SCREEN = 'TEST_SCREEN';
+
 export const KEYBOARD_AVOIDING = 'KEYBOARD_AVOIDING';

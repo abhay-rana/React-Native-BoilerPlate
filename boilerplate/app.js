@@ -18,11 +18,14 @@ import ErrorBoundary from '~/components/container/error-boundary';
 
 import { CommonResetLocalState } from '~/actions/container-actions';
 
+import { APP_MODE, SENTRY_ANDROID_DSN } from '~/env';
+
 Sentry.init({
-    dsn: 'https://bd036f012e22d8fa2b7d7d3de94f74e0@o4505084829106176.ingest.sentry.io/4505854832214016',
+    dsn: SENTRY_ANDROID_DSN,
     // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
     // We recommend adjusting this value in production.
     tracesSampleRate: 1.0,
+    environment: APP_MODE,
 });
 
 const App = (props) => {

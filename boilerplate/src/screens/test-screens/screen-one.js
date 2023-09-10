@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import tw from '~/styles/tailwind';
 
-import { SCREEN_TWO } from '~/constants/navigation-constant';
+import { SCREEN_TWO, TEST_SCREEN } from '~/constants/navigation-constant';
 
 import Button from '~/components/library/button';
 import Text from '~/components/library/text';
@@ -60,6 +60,15 @@ const ScreenOne = (props) => {
                 }
             >
                 ScreenTwo
+            </Button>
+            <Button
+                onPress={() =>
+                    setLocation(TEST_SCREEN, {
+                        name: 'abhay',
+                    })
+                }
+            >
+                Test Screen
             </Button>
         </View>
     );

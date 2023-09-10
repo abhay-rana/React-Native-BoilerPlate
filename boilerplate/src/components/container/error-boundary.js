@@ -11,6 +11,8 @@ import tw from '~/styles/tailwind';
 import Button from '~/components/library/button';
 import Text from '~/components/library/text';
 
+import TrackError from '~/scripts/track-error';
+
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +27,7 @@ class ErrorBoundary extends Component {
     componentDidCatch(error, errorInfo) {
         // You can also log the error to an error reporting service
         //logErrorToMyService(error, errorInfo);
-        // TrackError.noAlert(error);
+        TrackError.noAlert(error);
     }
 
     render() {
@@ -56,7 +58,7 @@ class ErrorBoundary extends Component {
                             style={tw`mt-5
 						`}
                         >
-                            Continue Shopping
+                            Go To Home
                         </Button>
                     </View>
                 </View>

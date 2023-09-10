@@ -14,6 +14,7 @@ import {
     SCREEN_ONE,
     SCREEN_THREE,
     SCREEN_TWO,
+    TEST_SCREEN,
     TEXT_SCREEN,
     TOAST_SCREEN,
 } from '~/constants/navigation-constant';
@@ -30,6 +31,7 @@ import ScreenFour from '~/screens/test-screens/screen-four';
 import ScreenOne from '~/screens/test-screens/screen-one';
 import ScreenThree from '~/screens/test-screens/screen-three';
 import ScreenTwo from '~/screens/test-screens/screen-two';
+import TestScreen from '~/screens/test-screens/test-screen';
 
 import {
     ScreenListener,
@@ -82,6 +84,7 @@ const Navigation = (props) => {
                 <Stack.Screen name={SCREEN_THREE} component={ScreenThree} />
                 <Stack.Screen name={SCREEN_FOUR} component={ScreenFour} />
                 <Stack.Screen name={SCREEN_FIVE} component={ScreenFive} />
+                <Stack.Screen name={TEST_SCREEN} component={TestScreen} />
                 <Stack.Screen
                     name={KEYBOARD_AVOIDING}
                     component={KeyboardAvoidingScreen}
