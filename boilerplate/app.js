@@ -27,6 +27,7 @@ SentryLogger.init({
     // We recommend adjusting this value in production.
     tracesSampleRate: 1.0,
     environment: APP_MODE,
+    normalizeDepth: 10, // Or however deep you want your state context to be.(for redux)
 });
 
 const App = (props) => {

@@ -27,7 +27,7 @@ const sentryReduxEnhancer = SentryLogger.createReduxEnhancer({
     // Optionally pass options listed below
 });
 
-const middlewares = [thunk, sentryReduxEnhancer];
+const middlewares = [thunk];
 
 if (__DEV__) {
     //! use this flipper extensions in debug mode only
@@ -77,7 +77,10 @@ if (APP_MODE === 'development') {
             : compose;
 } else composeEnhancers = compose;
 
-const enhancer = composeEnhancers(applyMiddleware(...middlewares));
+const enhancer = composeEnhancers(
+    applyMiddleware(...middlewares),
+    sentryReduxEnhancer
+);
 export const store = createStore(persist_reducer, enhancer);
 export const persistor = persistStore(store);
 
