@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/react-native';
 import { useEffect } from 'react';
 import { StatusBar, View } from 'react-native';
 import 'react-native-gesture-handler';
@@ -18,9 +17,11 @@ import ErrorBoundary from '~/components/container/error-boundary';
 
 import { CommonResetLocalState } from '~/actions/container-actions';
 
+import { SentryLogger } from '~/scripts/track-error';
+
 import { APP_MODE, SENTRY_ANDROID_DSN } from '~/env';
 
-Sentry.init({
+SentryLogger.init({
     dsn: SENTRY_ANDROID_DSN,
     // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
     // We recommend adjusting this value in production.
@@ -85,4 +86,4 @@ const mapDispatchToProps = (dispatch) => ({
     Common_Reset_Local_State: () => dispatch(CommonResetLocalState()),
 });
 
-export default Sentry.wrap(connect(null, mapDispatchToProps)(App));
+export default SentryLogger.wrap(connect(null, mapDispatchToProps)(App));

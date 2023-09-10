@@ -8,6 +8,8 @@ import { AuthReducer } from '~/reducers/auth-reducer';
 import { ContainerReducer } from '~/reducers/container-reducer';
 import { RehydrationReducer } from '~/reducers/rehydration-reducer';
 
+import { SentryLogger } from '~/scripts/track-error';
+
 import { APP_MODE } from '~/env';
 
 const combine_reducers = combineReducers({
@@ -21,10 +23,14 @@ if (!__DEV__) {
     var storage = new MMKV();
 }
 
+const sentryReduxEnhancer = SentryLogger.createReduxEnhancer({
+    // Optionally pass options listed below
+});
+
 const middlewares = [
     thunk,
     // offline(custom_config),
-    // sentryReduxEnhancer,
+    sentryReduxEnhancer,
 ];
 
 if (__DEV__) {
