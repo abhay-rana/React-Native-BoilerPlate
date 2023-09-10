@@ -27,11 +27,7 @@ const sentryReduxEnhancer = SentryLogger.createReduxEnhancer({
     // Optionally pass options listed below
 });
 
-const middlewares = [
-    thunk,
-    // offline(custom_config),
-    sentryReduxEnhancer,
-];
+const middlewares = [thunk, sentryReduxEnhancer];
 
 if (__DEV__) {
     //! use this flipper extensions in debug mode only
@@ -67,10 +63,6 @@ const persistConfig = {
 
 const persist_reducer = persistReducer(persistConfig, combine_reducers);
 
-// const sentryReduxEnhancer = SentryLogger.createReduxEnhancer({
-//     // Optionally pass options listed below
-// });
-
 let composeEnhancers;
 
 if (APP_MODE === 'development') {
@@ -79,7 +71,8 @@ if (APP_MODE === 'development') {
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
             ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
                   // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-                  //   trace: true, trace will be impact in performance so make it commented if you don't need it
+                  // trace will be impact in performance so make it commented if you don't need it
+                  //   trace: true,
               })
             : compose;
 } else composeEnhancers = compose;
