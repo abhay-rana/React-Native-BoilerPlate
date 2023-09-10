@@ -19,6 +19,10 @@ import { useLocation } from '~/hooks/useLocation';
 const ScreenOne = (props) => {
     const { setLocation } = useLocation();
 
+    function getError() {
+        throw new Error('hello there');
+    }
+
     return (
         <View style={tw`flex-1`}>
             <Text style={tw`font-401`}>ScreenOne</Text>
@@ -31,6 +35,7 @@ const ScreenOne = (props) => {
                 }
                 bordered
             />
+            <Button onPress={getError}>Error</Button>
             <TextInput
                 value={props.signin_details.name}
                 label="name"

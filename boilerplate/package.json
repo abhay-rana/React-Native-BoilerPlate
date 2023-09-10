@@ -7,9 +7,9 @@
         "npm": "please-use-yarn",
         "yarn": ">= 1.19.1"
     },
-    "android_package": "com.<package_name>",
+    "android_package": "com.reactnativetemplate",
     "android_build_number": 1,
-    "android_release_number": "1.x.x",
+    "android_release_number": "1.0.0",
     "scripts": {
         "lint": "eslint .",
         "test": "jest",
@@ -30,13 +30,14 @@
         "upgrade": "npx @rnx-kit/align-deps --requirements react-native@<RN_VERSION> --write"
     },
     "dependencies": {
-        "axios": "^1.4.0",
         "@notifee/react-native": "^7.7.1",
         "@react-native-async-storage/async-storage": "^1.18.2",
         "@react-native-firebase/app": "^17.5.0",
         "@react-native-firebase/messaging": "^17.4.3",
         "@react-navigation/native": "^6.0.8",
         "@react-navigation/native-stack": "^6.9.12",
+        "@sentry/react-native": "^5.9.1",
+        "axios": "^1.4.0",
         "react": "18.2.0",
         "react-native": "^0.72.0",
         "react-native-gesture-handler": "^2.12.0",
