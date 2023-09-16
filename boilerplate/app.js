@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { StatusBar, View } from 'react-native';
 import 'react-native-gesture-handler';
 import {
@@ -6,7 +5,6 @@ import {
     SafeAreaView,
     useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import { connect } from 'react-redux';
 
 import tw from '~/styles/tailwind';
 
@@ -14,8 +12,6 @@ import Navigation from '~/navigation/navigation';
 
 import Container from '~/components/container/container';
 import ErrorBoundary from '~/components/container/error-boundary';
-
-import { CommonResetLocalState } from '~/actions/container-actions';
 
 import { SentryLogger } from '~/scripts/track-error';
 
@@ -30,11 +26,7 @@ SentryLogger.init({
     normalizeDepth: 10, // Or however deep you want your state context to be.(for redux)
 });
 
-const App = (props) => {
-    useEffect(() => {
-        props.Common_Reset_Local_State();
-    }, []);
-
+const App = () => {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1 }}>
@@ -83,8 +75,4 @@ const BottomStatusFiller = () => {
     );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    Common_Reset_Local_State: () => dispatch(CommonResetLocalState()),
-});
-
-export default SentryLogger.wrap(connect(null, mapDispatchToProps)(App));
+export default SentryLogger.wrap(App);

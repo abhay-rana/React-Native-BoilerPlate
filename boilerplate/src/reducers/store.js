@@ -81,7 +81,7 @@ const enhancer = composeEnhancers(
     applyMiddleware(...middlewares),
     sentryReduxEnhancer
 );
-export const store = createStore(persist_reducer, enhancer);
+const store = createStore(persist_reducer, enhancer);
 export const persistor = persistStore(store);
 
 export default store;
