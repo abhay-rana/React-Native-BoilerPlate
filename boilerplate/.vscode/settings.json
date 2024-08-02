@@ -1,0 +1,10 @@
+{
+    "tailwindCSS.classAttributes": ["class", "className", "ngClass", "style"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+    // "editor.codeActionsOnSave": {
+    //     "source.fixAll": true,
+    //     "source.organizeImports": true,
+    //     "source.sortMembers": true
+    // }
+}
