@@ -5,6 +5,10 @@ import CustomToast from '~/components/library/custom-toast';
 
 const Alertify = {
     success: (alert_text) => {
+        if (typeof alert_text !== 'string') {
+            console.error('Alertify.success expects a string as alert_text');
+            return;
+        }
         Toast.show({
             type: 'success',
             text1: alert_text,
@@ -14,6 +18,10 @@ const Alertify = {
         });
     },
     error: (alert_text) => {
+        if (typeof alert_text !== 'string') {
+            console.error('Alertify.error expects a string as alert_text');
+            return;
+        }
         Toast.show({
             type: 'error',
             text1: alert_text,
@@ -23,6 +31,10 @@ const Alertify = {
         });
     },
     default: (alert_text, action) => {
+        if (typeof alert_text !== 'string') {
+            console.error('Alertify.default expects a string as alert_text');
+            return;
+        }
         Toast.show({
             type: 'default',
             text1: alert_text,

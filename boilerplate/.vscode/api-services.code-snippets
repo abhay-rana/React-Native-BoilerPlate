@@ -23,9 +23,7 @@
             "\t\tconst res = await getApi(${3:API_ENDPOINT});",
             "\t\treturn { res };",
             "\t} catch (error) {",
-            "\t\tconsole.error(error);",
-            "\t\tAlertify.error(error.message[0]);",
-            "\t\treturn rejectWithValue(error);",
+            "\t\treturn handleApiError(error);",
             "\t}",
             "})"
         ],
@@ -39,9 +37,7 @@
             "\t\tconst res = await postApi(${3:API_ENDPOINT},{...payload});",
             "\t\treturn { res };",
             "\t} catch (error) {",
-            "\t\tconsole.error(error);",
-            "\t\tAlertify.error(error.message[0]);",
-            "\t\treturn rejectWithValue(error);",
+            "\t\treturn handleApiError(error);",
             "\t}",
             "})"
         ],
@@ -55,9 +51,7 @@
             "\t\tconst res = await patchApi(${3:API_ENDPOINT},{...payload});",
             "\t\treturn { res };",
             "\t} catch (error) {",
-            "\t\tconsole.error(error);",
-            "\t\tAlertify.error(error.message[0]);",
-            "\t\treturn Promise.reject();",
+            "\t\treturn handleApiError(error);",
             "\t}",
             "})"
         ],
@@ -71,9 +65,7 @@
             "\t\tconst res = await deleteApi(${3:API_ENDPOINT},{...payload});",
             "\t\treturn { res };",
             "\t} catch (error) {",
-            "\t\tconsole.error(error);",
-            "\t\tAlertify.error(error.message[0]);",
-            "\t\treturn Promise.reject();",
+            "\t\treturn handleApiError(error);",
             "\t}",
             "})"
         ],

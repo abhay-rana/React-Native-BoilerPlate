@@ -1,86 +1,80 @@
 import axios from 'axios';
+import { Logout } from '~/redux/actions/auth-actions';
+import store from '~/redux/store';
 
-import store from '~/reducers/store';
+import Alertify from '~/scripts/toast';
 
 import { ProjectUrl } from '~/env';
 
+// Create an axios instance with the base URL
 const api = axios.create({
     baseURL: ProjectUrl,
 });
 
-//* 2xx ->  Success
-//* 4xx ->  client side error
-//* 5xx ->  server side error
-//** Axios reject the response if the status code belongs to 5xx and 4xx */
-//! 401 Unauthorized -> you are not login
-//! 403 Forbidden    ->    you are login but not have permissions
-//! 400 Bad Request  -> error from client side check your arguments in body
-//! 404 Not Found    -> endpoint does not exist
-//! 500 Internal Server Error  -> error from the server side
-
+// Request interceptor to add the authorization token
 api.interceptors.request.use(
     async (config) => {
-        let token = store.getState().auth_store.token;
-        //console.log("Token", token);
+        const token = store.getState().auth_store.token;
         if (token) {
-            config.headers.Authorization = 'Bearer ' + token;
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
+    (error) => Promise.reject(error)
+);
 
+// Response interceptor to handle errors
+api.interceptors.response.use(
+    (response) => response,
     (error) => {
-        return Promise.reject(error);
+        if (error?.response?.status === 401) {
+            store.dispatch(Logout());
+            Alertify.error('Your session is expired');
+        }
+        return Promise.reject(error?.response?.data);
     }
 );
-export const postApi = async (
+
+// Centralized error handling function
+export function handleApiError(error, rejectWithValue) {
+    console.error(error);
+    Alertify.error(error?.message?.[0] || 'An error occurred');
+    return rejectWithValue(error);
+}
+
+// Helper function to handle API requests
+const handleApiRequest = async (
+    method,
     path,
     data = {},
-    headers = { Accept: 'application/json' }
+    headers = {},
+    cancelToken
 ) => {
-    var result = await new Promise((resolve, reject) => {
-        api.post(path, data, {
-            headers: headers,
-        })
-            .then((response) => {
-                console.log(response);
-                return resolve(response);
-            })
-            .catch((error) => {
-                //! NOTE - use "error.response.data` (not "error")
-                console.log('hey post api error');
-                console.log(error.response.data);
-                // if (error.response.status === 401) {
-                //     store.getState().auth.email &&
-                //         store.dispatch(userForceSignOut());
-                //     return;
-                // }
-                return reject(error.response.data);
-            });
-        api.get;
-    });
-    return result;
+    try {
+        const response = await api({
+            method,
+            url: path,
+            data,
+            headers: {
+                Accept: 'application/json',
+                'ngrok-skip-browser-warning': '69420',
+                ...headers,
+            },
+            cancelToken,
+        });
+        return response.data;
+    } catch (error) {
+        console.error(`API ${method.toUpperCase()} error:`, error);
+        throw error;
+    }
 };
 
-export const getApi = async (
-    path,
-    data = {},
-    headers = { Accept: 'application/json' }
-) => {
-    var result = await new Promise((resolve, reject) => {
-        api.get(path, data, {
-            headers: headers,
-        })
-            .then((response) => resolve(response.data))
-            .catch((error) => {
-                // if (error.response.status === 401) {
-                //     store.getState().auth.email &&
-                //         store.dispatch(userForceSignOut());
-                //     return;
-                // }
+// Exported API functions
+export const postApi = (path, data, headers, cancelToken) =>
+    handleApiRequest('post', path, data, headers, cancelToken);
 
-                return reject(error.response.data);
-            });
-        api.get;
-    });
-    return result;
-};
+export const getApi = (path, headers, cancelToken) =>
+    handleApiRequest('get', path, {}, headers, cancelToken);
+
+export const patchApi = (path, data, headers) =>
+    handleApiRequest('patch', path, data, headers);
